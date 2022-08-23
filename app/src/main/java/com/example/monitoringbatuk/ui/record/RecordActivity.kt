@@ -300,9 +300,9 @@ class RecordActivity : AppCompatActivity() {
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
+                // ========================= setPush() Hardware
                 val dataBatuk = snapshot.getValue<HashMap<String, Float>>()
                 val persentaseValue = dataBatuk?.values!!
-
 
                 for (persen in persentaseValue) {
                     Log.d("DATA", persen.toString())
@@ -320,23 +320,25 @@ class RecordActivity : AppCompatActivity() {
                     Log.d("persentase", persen.toString())
                 }
 
+                //============================================
 
-//                ("$dataBatuk%").also {
+                //=========== setFloat() Hardware ====================
+//                val dataBatukPersen = snapshot.value.toString()
+//                listPoint.add(dataBatukPersen.toFloat())
+//
+//                if (dataBatukPersen.toFloat() > 50.0) {
+//                    count++
+//                }
+//
+//                persentase = dataBatukPersen
+//
+//                ("$dataBatukPersen%").also {
 //                    binding.tvPersentase.text = it
 //                } // utuk menampilkan ke TextView
-
-                Log.d("AAA", dataBatuk.toString())
-                Log.d("BBBBB", persentaseValue.toString())
-
-
+           // =====================================================
 
 
                 sendDataPersentaseToFirestore(mapOf("${snapshot.key}" to "${snapshot.value}"))
-
-
-//                if (snapshot.value.toString().toFloat() > 50.0) {
-//                    count++ // filterisasi dan perhitungan jumlah batuk
-//                }
 
 
                 val record = ArrayList<Entry>()
